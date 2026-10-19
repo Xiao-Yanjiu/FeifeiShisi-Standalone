@@ -38,6 +38,6 @@ Android：运行 `client/build.ps1`。`YANJIU_BUILD_TOOLS` 指向包含 JDK 17�
 
 ## 来源与许可
 
-基于 [Xiao-Yanjiu/OmniToolbox.xiaoyanjiu](https://github.com/Xiao-Yanjiu/OmniToolbox.xiaoyanjiu)，参考下载提交 `fa0dec27b443f732cc72640ebb7ce9ebfa824333`。本项目源码按 **GPL-3.0-or-later** 提供，见 [LICENSE](LICENSE)。
+基于 [Xiao-Yanjiu/OmniToolbox.xiaoyanjiu]，参考下载提交 `fa0dec27b443f732cc72640ebb7ce9ebfa824333`。本项目源码按 **GPL-3.0-or-later** 提供，见 [LICENSE](LICENSE)。
 
 MinHook、QRCoder、ZXing、ImGui 和 .NET 等依赖遵循各自许可。发布包保留对应许可证；NapCat 官方包未修改，适用其完整有限再分发许可与非商业使用条件；中文字体采用 SIL OFL。游戏图标和数据版权归各自权利人所有，不纳入本项目 GPL 授权。
