@@ -1,0 +1,2 @@
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0-windows</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup><ItemGroup><Compile Include="../desktop-host/AntiIdle.cs" Link="AntiIdle.cs"/><Compile Include="../server/PhoneChatCore.cs" Link="PhoneChatCore.cs"/><Compile Include="../server/GlobalUsings.cs" Link="GlobalUsings.cs"/></ItemGroup></Project>
+

@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+**/runtime/
+**/local/
+artifacts/
+*.jks
+*.dpapi
+*.pfx
+*.log
+imgui.ini

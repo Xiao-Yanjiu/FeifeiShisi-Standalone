@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <UseSharedCompilation>false</UseSharedCompilation><OutputType>WinExe</OutputType><TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks><AssemblyName>FF14Chat.Trial.Server</AssemblyName><AssemblyTitle>狒狒食柿·试用版</AssemblyTitle>
+    <Version>0.1.2</Version><ApplicationIcon>app.ico</ApplicationIcon>
+    <PublishSingleFile>true</PublishSingleFile><SelfContained>true</SelfContained><RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile><IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  </PropertyGroup>
+  <ItemGroup><EmbeddedResource Include="app.ico"/><EmbeddedResource Include="game-profile.json" Condition="Exists('game-profile.json')"/><EmbeddedResource Include="worlds.json" Condition="Exists('worlds.json')"/><EmbeddedResource Include="../native/output/TrialBridge.dll" Condition="Exists('../native/output/TrialBridge.dll')" Link="TrialBridge.dll"/></ItemGroup>
+<ItemGroup><Compile Include="../original-port/desktop-host/AntiIdle.cs" Link="AntiIdle.cs"/><Compile Include="../original-port/server/PhoneChatCore.cs" Link="Original/PhoneChatCore.cs"/><Compile Include="../original-port/server/GlobalUsings.cs" Link="Original/GlobalUsings.cs"/></ItemGroup><ItemGroup><PackageReference Include="ClickableTransparentOverlay" Version="11.1.0"/></ItemGroup><ItemGroup><Compile Include="../original-port/server/ModuleSettings.cs" Link="Original/ModuleSettings.cs"/><Compile Include="../original-port/server/OriginalAuxiliary.cs" Link="Original/OriginalAuxiliary.cs"/></ItemGroup><ItemGroup><Compile Include="../original-port/server/OriginalSettingsPanel.Generated.cs" Link="Original/OriginalSettingsPanel.Generated.cs"/></ItemGroup><ItemGroup><EmbeddedResource Include="catalog.json"/><EmbeddedResource Include="attributes.json"/></ItemGroup></Project>
+
+
+
+
+

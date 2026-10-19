@@ -1,0 +1,32 @@
+{
+  "ImageSha256": "958B78E278AD896493C484EB313FF605AB41EDEFEF74F92B0EE078E69B281BF9",
+  "Timestamp": 1791220929,
+  "ImageSize": 58789888,
+  "Addresses": {
+    "InventoryManager": 44867568,
+    "UIState": 44902752,
+    "InventoryTypeTable": 35209408,
+    "ExecuteMacro": 9515344,
+    "OpenListing": 5610960,
+    "AtkStage": 44723968,
+    "GetAddonByName": 6809744,
+    "QuestManager": 44895872,
+    "CurrencyManager": 45011912,
+    "PrintMessage": 10165584,
+    "Framework": 42951600,
+    "GetUIModule": 864288,
+    "ProcessChat": 7917920,
+    "StringCtor": 560720,
+    "StringSet": 563568,
+    "StringDtor": 563520,
+    "PlayerState": 44905368,
+    "ObjectManager": 42667440,
+    "GroupManager": 42690528,
+    "ReceiveListing": 9956416,
+    "RequestCategoryListings": 5615456,
+    "GetAgentById": 4804944,
+    "RequestListingsUpdate": 5614592
+  },
+  "PrintPrologue": "QFVTVkFVQVdIjawk0P7//w==",
+  "ListingPrologue": "QFNBV0iD7ChIi9lMi/pIiw=="
+}

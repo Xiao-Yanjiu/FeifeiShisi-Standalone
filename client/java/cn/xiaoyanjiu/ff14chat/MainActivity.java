@@ -1,0 +1,178 @@
+package cn.xiaoyanjiu.ff14chat.trial;
+
+import android.app.*;
+import android.content.*;
+import android.content.pm.PackageManager;
+import android.os.*;
+import android.webkit.*;
+import android.widget.*;
+import org.json.*;
+
+public class MainActivity extends Activity {
+ private WebView web;
+ private HardwareStreamPlayer hardwarePlayer;
+ private volatile String pendingBoardView="",pendingListing="";
+ private FrameLayout root;
+ private boolean pageReady;
+ private boolean streamFullscreenActive;private StreamImeView streamIme;private boolean streamImeVisible;
+ private JSONObject pendingPushOpen;
+ private void receivePushIntent(Intent intent){if(intent==null)return;try{android.net.Uri uri=intent.getData();String channel="",target="";if(uri!=null){if(!"xiaoyanjiu-trial".equals(uri.getScheme())||!"chat".equals(uri.getHost()))return;channel=uri.getQueryParameter("channel");target=uri.getQueryParameter("target");}else if(intent.hasExtra("channel")){channel=intent.getStringExtra("channel");target=intent.getStringExtra("target");}else return;if(channel==null||channel.length()>100||target!=null&&target.length()>100)return;pendingPushOpen=new JSONObject().put("channel",channel).put("target",target==null?"":target);deliverPushIntent();}catch(Exception ignored){}}
+ private void deliverPageIntent(){Intent i=getIntent();if(!pageReady||i==null)return;String route=i.getStringExtra("navigatePage");if(route==null)return;i.removeExtra("navigatePage");web.evaluateJavascript("navigatePage("+JSONObject.quote(route)+")",null);}
+ private void deliverPushIntent(){if(!pageReady||pendingPushOpen==null)return;web.evaluateJavascript("openPushChat("+pendingPushOpen.toString()+")",null);pendingPushOpen=null;}
+ @Override public void onNewIntent(Intent intent){super.onNewIntent(intent);setIntent(intent);receivePushIntent(intent);deliverPageIntent();}
+ void sendIme(String session,String text,int deletes){final long seq=System.nanoTime();streamInputExecutor.execute(()->{try{JSONObject data=new JSONObject().put("session",session).put("sequence",seq).put("text",text).put("delete",deletes);Transport.request(this,"/stream-ime",data);}catch(Exception e){ui.post(()->{if(streamIme!=null)streamIme.close();showError(e.getMessage());});}});}
+ void finishIme(StreamImeView view){if(streamIme!=view)return;((android.view.inputmethod.InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(view.getWindowToken(),0);root.removeView(view);streamIme=null;streamImeVisible=false;web.requestFocus();web.evaluateJavascript("restoreStreamControl()",null);}
+ private final Handler ui=new Handler(Looper.getMainLooper());
+ private final java.util.concurrent.ExecutorService readExecutor=java.util.concurrent.Executors.newFixedThreadPool(2);
+ private final java.util.concurrent.ExecutorService streamExecutor=java.util.concurrent.Executors.newSingleThreadExecutor();
+ private final java.util.concurrent.ExecutorService streamPointerExecutor=java.util.concurrent.Executors.newSingleThreadExecutor();
+ private final java.util.concurrent.ExecutorService streamInputExecutor=java.util.concurrent.Executors.newSingleThreadExecutor();
+ private final java.util.concurrent.ExecutorService assetExecutor=java.util.concurrent.Executors.newSingleThreadExecutor();
+ private final java.util.concurrent.atomic.AtomicBoolean assetLoading=new java.util.concurrent.atomic.AtomicBoolean();
+ private final java.util.concurrent.ExecutorService pairingExecutor=java.util.concurrent.Executors.newSingleThreadExecutor();
+ private final java.util.concurrent.atomic.AtomicInteger pairingGeneration=new java.util.concurrent.atomic.AtomicInteger();
+ private void manualConnect(String host,int port){manualConnect(host,port,"");}
+ private void manualConnect(String host,int port,String accountName){final int generation=pairingGeneration.incrementAndGet();pairingExecutor.execute(()->{try{
+   if(port<1||port>65535)throw new Exception("端口范围是1～65535");String value=host.trim();if(value.startsWith("https://"))value=value.substring(8);java.net.URI uri=new java.net.URI("https://"+value);if(uri.getHost()==null||uri.getRawUserInfo()!=null||uri.getPort()!=-1||!uri.getRawPath().isEmpty()||uri.getRawQuery()!=null||uri.getRawFragment()!=null)throw new Exception("请只填写IP地址或域名，端口单独填写");
+   String address=new java.net.URI("https",null,uri.getHost(),port,null,null,null).toString(),pin=Transport.bootstrap(address);if(pairingGeneration.get()!=generation)return;
+   String id=java.util.UUID.randomUUID().toString();byte[] random=new byte[32];new java.security.SecureRandom().nextBytes(random);StringBuilder secret=new StringBuilder();for(byte b:random)secret.append(String.format("%02x",b&255));JSONObject request=new JSONObject().put("id",id).put("secret",secret.toString()).put("name",Build.MANUFACTURER+" "+Build.MODEL).put("pin",pin);
+   JSONObject reply=Transport.call(address,pin,"","/pair-request",request);String code=reply.getString("code");if(pairingGeneration.get()!=generation)return;pairProgress(code,"请在电脑模块输入此验证码并点击授权");long until=android.os.SystemClock.elapsedRealtime()+300000;
+   while(pairingGeneration.get()==generation&&android.os.SystemClock.elapsedRealtime()<until){if(reply.optBoolean("approved")){if(pairingGeneration.get()!=generation)return;String credential=reply.getString("token");if(credential.length()!=64)throw new Exception("授权凭证无效");getSharedPreferences("pair",0).edit().putString("url",address).putString("pin",pin).putString("token",credential).remove("expectedCharacterKey").remove("characterKey").apply();getSharedPreferences("receiver",0).edit().putBoolean("paused",false).apply();AccountStore.remember(this,null);AccountStore.renameCurrent(this,accountName);ui.post(()->{if(pairingGeneration.get()!=generation)return;stopService(new Intent(this,ChatService.class));ChatService.initialize();startForegroundService(new Intent(this,ChatService.class));web.evaluateJavascript("manualPairDone()",null);Toast.makeText(this,"授权成功",Toast.LENGTH_SHORT).show();});return;}Thread.sleep(2000);reply=Transport.call(address,pin,"","/pair-status",request);}if(pairingGeneration.get()==generation)throw new Exception("授权请求已超时，请重新连接");
+  }catch(Exception e){if(pairingGeneration.get()==generation)pairProgress("",e.getMessage()==null?"连接失败":e.getMessage());}});}
+ private void pairProgress(String code,String text){ui.post(()->{if(!isFinishing()&&!isDestroyed())web.evaluateJavascript("manualPairProgress("+JSONObject.quote(code)+","+JSONObject.quote(text)+")",null);});}
+ @Override public void onCreate(Bundle b){super.onCreate(b);try{ChatService.initializeForAppStart(this);}catch(Exception e){ChatService.state="聊天缓存初始化失败："+e.getMessage();ui.post(()->showError(ChatService.state));}
+  if(Build.VERSION.SDK_INT>=33)requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"},11);
+  web=new WebView(this);web.setBackgroundColor(0xff15181f);web.getSettings().setJavaScriptEnabled(true);web.getSettings().setDomStorageEnabled(true);web.getSettings().setAllowFileAccess(false);web.getSettings().setAllowContentAccess(false);
+  web.addJavascriptInterface(new Bridge(),"Phone");
+  web.setWebChromeClient(new WebChromeClient(){@Override public boolean onJsConfirm(WebView view,String url,String message,JsResult result){if(!"file:///android_asset/index.html".equals(url)){result.cancel();return true;}AlertDialog dialog=GameDialogStyle.builder(MainActivity.this).setMessage(message).setPositiveButton("确认",(d,w)->result.confirm()).setNegativeButton("取消",(d,w)->result.cancel()).setOnCancelListener(d->result.cancel()).create();dialog.show();themeConfirmation(dialog);return true;}});
+
+  web.setWebViewClient(new WebViewClient(){@Override public boolean shouldOverrideUrlLoading(WebView w,WebResourceRequest r){return true;}
+   @Override public void onPageFinished(WebView view,String url){if("file:///android_asset/index.html".equals(url)){pageReady=true;deliverPushIntent();deliverPageIntent();}}
+  });
+  setContentView(web);
+  getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+  root=new android.widget.FrameLayout(this);
+  root.setBackgroundColor(0xff302b24);
+  getWindow().setStatusBarColor(0xff302b24);getWindow().setNavigationBarColor(0xff302b24);
+  getWindow().getDecorView().setSystemUiVisibility(0);
+  ((android.view.ViewGroup)web.getParent()).removeView(web);
+  hardwarePlayer=new HardwareStreamPlayer(this,(number,fps,error)->ui.post(()->{if(!isFinishing()&&!isDestroyed())web.evaluateJavascript("streamVideoStatus("+number+","+fps+","+JSONObject.quote(error)+")",null);}));root.addView(hardwarePlayer.view,new FrameLayout.LayoutParams(1,1));root.addView(web,new android.widget.FrameLayout.LayoutParams(-1,-1));setContentView(root);
+  if(Build.VERSION.SDK_INT>=30){
+   getWindow().setDecorFitsSystemWindows(false);
+   root.setOnApplyWindowInsetsListener((v,insets)->{
+    android.graphics.Insets bars=insets.getInsets(android.view.WindowInsets.Type.systemBars());
+    android.graphics.Insets ime=insets.getInsets(android.view.WindowInsets.Type.ime());
+    if(streamIme!=null){if(ime.bottom>0)streamImeVisible=true;else if(streamImeVisible){streamImeVisible=false;ui.post(()->{if(streamIme!=null)streamIme.close();});}}
+    root.setPadding(streamFullscreenActive?0:bars.left,streamFullscreenActive?0:bars.top,streamFullscreenActive?0:bars.right,Math.max(streamFullscreenActive?0:bars.bottom,ime.bottom));
+    return android.view.WindowInsets.CONSUMED;
+   });root.requestApplyInsets();
+  }
+  web.loadUrl("file:///android_asset/index.html");
+  receivePushIntent(getIntent());
+  applyTheme(getSharedPreferences("appearance",0).getString("settings","{}"));
+  if(!getSharedPreferences("pair",0).getString("token","").isEmpty()&&!getSharedPreferences("receiver",0).getBoolean("paused",false))startForegroundService(new Intent(this,ChatService.class));
+ }
+ @Override public void onBackPressed(){if(streamIme!=null){streamIme.close();return;}if(web==null){super.onBackPressed();return;}web.evaluateJavascript("handleAppBack()",result->{if(!"true".equals(result))moveTaskToBack(true);});}
+ @Override public void onResume(){super.onResume();ChatService.visible=true;if(!getSharedPreferences("pair",0).getString("token","").isEmpty()&&!getSharedPreferences("receiver",0).getBoolean("paused",false))startForegroundService(new Intent(this,ChatService.class).setAction("recover"));}
+ @Override public void onPause(){if(streamIme!=null)streamIme.close();ChatService.visible=false;if(web!=null)web.evaluateJavascript("if(typeof stopGameStream==='function')stopGameStream();if(typeof stopCharacterModel==='function')stopCharacterModel();if(typeof closeOmniGlamourPage==='function')closeOmniGlamourPage()",null);super.onPause();}
+ @Override public void onDestroy(){if(hardwarePlayer!=null)hardwarePlayer.stop();pairingGeneration.incrementAndGet();pairingExecutor.shutdown();assetExecutor.shutdownNow();readExecutor.shutdownNow();streamExecutor.shutdownNow();streamInputExecutor.shutdownNow();streamPointerExecutor.shutdownNow();web.removeJavascriptInterface("Phone");web.destroy();super.onDestroy();}
+ private void themeConfirmation(AlertDialog dialog){GameDialogStyle.apply(this,dialog);}
+ private void showError(String text){GameDialogStyle.builder(this).setTitle("连接提示").setMessage(text).setPositiveButton("知道了",null).show();}
+ @Override public void onActivityResult(int request,int result,Intent data){super.onActivityResult(request,result,data);if(result!=RESULT_OK||data==null)return;if(request==30&&data.getData()!=null)importBackground(data.getData());}
+
+ private void applyTheme(String value){ui.post(()->{try{
+  String theme=new JSONObject(value).optString("theme","game");boolean light=theme.equals("white")||theme.equals("yellow")||theme.equals("grey");
+  int color=android.graphics.Color.parseColor(theme.equals("white")?"#f6f7fb":theme.equals("yellow")?"#f6e8bd":theme.equals("grey")?"#e2e5e9":theme.equals("game")?"#313031":"#15181f");
+  root.setBackgroundColor(color);getWindow().setStatusBarColor(color);getWindow().setNavigationBarColor(color);web.setBackgroundColor(hardwarePlayer!=null&&hardwarePlayer.view.getVisibility()==android.view.View.VISIBLE?android.graphics.Color.TRANSPARENT:color);
+  if(Build.VERSION.SDK_INT>=30)getWindow().getInsetsController().setSystemBarsAppearance(light?android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS:0,android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
+  else getWindow().getDecorView().setSystemUiVisibility(light?android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR|android.view.View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR:0);
+ }catch(Exception ignored){}});}
+ private java.io.File backgroundFile(){return new java.io.File(getFilesDir(),"chat-background.jpg");}
+ private String readBackground(){try{java.io.File file=backgroundFile();if(!file.exists()||file.length()>3*1024*1024)return "";return "data:image/jpeg;base64,"+android.util.Base64.encodeToString(java.nio.file.Files.readAllBytes(file.toPath()),android.util.Base64.NO_WRAP);}catch(Exception e){return "";}}
+ private void importBackground(android.net.Uri uri){new Thread(()->{android.graphics.Bitmap bitmap=null;java.io.FileOutputStream output=null;android.util.AtomicFile store=new android.util.AtomicFile(backgroundFile());try{
+  android.graphics.BitmapFactory.Options bounds=new android.graphics.BitmapFactory.Options();bounds.inJustDecodeBounds=true;
+  try(java.io.InputStream in=getContentResolver().openInputStream(uri)){android.graphics.BitmapFactory.decodeStream(in,null,bounds);}
+  if(bounds.outWidth<=0||bounds.outHeight<=0)throw new Exception("无法读取这张图片，请选择 JPG 或 PNG");
+  android.graphics.BitmapFactory.Options options=new android.graphics.BitmapFactory.Options();options.inSampleSize=1;while(Math.max(bounds.outWidth,bounds.outHeight)/options.inSampleSize>1600)options.inSampleSize*=2;
+  try(java.io.InputStream in=getContentResolver().openInputStream(uri)){bitmap=android.graphics.BitmapFactory.decodeStream(in,null,options);}
+  if(bitmap==null)throw new Exception("图片解码失败");
+  int orientation=1;try(java.io.InputStream in=getContentResolver().openInputStream(uri)){orientation=new android.media.ExifInterface(in).getAttributeInt(android.media.ExifInterface.TAG_ORIENTATION,1);}catch(Exception ignored){}
+  if(orientation==3||orientation==6||orientation==8){android.graphics.Matrix matrix=new android.graphics.Matrix();matrix.postRotate(orientation==3?180:orientation==6?90:270);android.graphics.Bitmap rotated=android.graphics.Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);if(rotated!=bitmap){bitmap.recycle();bitmap=rotated;}}
+  output=store.startWrite();if(!bitmap.compress(android.graphics.Bitmap.CompressFormat.JPEG,85,output))throw new Exception("保存背景失败");store.finishWrite(output);output=null;
+  String image=readBackground();ui.post(()->web.evaluateJavascript("backgroundChanged("+JSONObject.quote(image)+")",null));
+ }catch(Exception e){if(output!=null)store.failWrite(output);ui.post(()->showError(e.getMessage()));}finally{if(bitmap!=null)bitmap.recycle();}},"Chat-background").start();}
+ private final class Bridge {
+  @JavascriptInterface public String bitmapIcons(){return getSharedPreferences("display",0).getString("bitmapIcons","{}");}
+  @JavascriptInterface public String statusIcons(){return getSharedPreferences("display",0).getString("statusIcons","{}");}
+  @JavascriptInterface public String jobIcons(){return getSharedPreferences("display",0).getString("jobIcons","{}");}
+  @JavascriptInterface public String symbolFont(){try{java.io.File font=new java.io.File(getFilesDir(),"game-symbol.ttf");return font.isFile()?android.util.Base64.encodeToString(java.nio.file.Files.readAllBytes(font.toPath()),android.util.Base64.NO_WRAP):"";}catch(Exception e){return "";}}
+  @JavascriptInterface public void displayAssets(){if(isDestroyed()||!assetLoading.compareAndSet(false,true))return;assetExecutor.execute(()->{try{try{JSONObject assets=Transport.request(MainActivity.this,"/display-assets?kind=font",null);byte[] bytes=android.util.Base64.decode(assets.getString("symbolFont"),android.util.Base64.DEFAULT);if(bytes.length>2*1024*1024)throw new Exception("字体资源无效");android.util.AtomicFile file=new android.util.AtomicFile(new java.io.File(getFilesDir(),"game-symbol.ttf"));java.io.FileOutputStream out=file.startWrite();try{out.write(bytes);file.finishWrite(out);}catch(Exception e){file.failWrite(out);throw e;}}catch(Exception ignored){}for(String kind:new String[]{"status","jobs","bitmap"}){try{JSONObject data=Transport.request(MainActivity.this,"/display-assets?kind="+kind,null);String field=kind.equals("jobs")?"jobIcons":kind.equals("status")?"statusIcons":"bitmapIcons";if(data.optJSONObject(field)!=null)getSharedPreferences("display",0).edit().putString(field,data.getJSONObject(field).toString()).apply();}catch(Exception ignored){}}ui.post(()->{if(!isDestroyed()&&!isFinishing())web.evaluateJavascript("loadGameSymbols()",null);});}finally{assetLoading.set(false);}});}
+  @JavascriptInterface public String statusSnapshot(){return ChatService.statusSnapshot();}
+
+
+  @JavascriptInterface public void requestPairNamed(String host,int port,String name){manualConnect(host,port,name);}
+  @JavascriptInterface public void navigationDragStarted(){ui.post(()->web.performHapticFeedback(android.view.HapticFeedbackConstants.LONG_PRESS));}
+  @JavascriptInterface public void renameAccount(String id,String name){ui.post(()->{try{AccountStore.rename(MainActivity.this,id,name);web.evaluateJavascript("accountRenameDone(true,\"\");accountsChanged()",null);}catch(Exception e){web.evaluateJavascript("accountRenameDone(false,"+JSONObject.quote(e.getMessage())+")",null);}});}
+  @JavascriptInterface public void party(String action,String member){(action.equals("read")?readExecutor:ChatService.SEND).execute(()->{try{JSONObject result=Transport.request(MainActivity.this,"/party",new JSONObject().put("action",action).put("memberId",member));ui.post(()->web.evaluateJavascript("partyResult("+JSONObject.quote(action)+",true,"+result+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("partyResult("+JSONObject.quote(action)+",false,{error:"+JSONObject.quote(e.getMessage())+"})",null));}});}
+
+
+  @JavascriptInterface public void boardListing(String view,String listing){pendingBoardView=view==null?"":view;pendingListing=listing==null?"":listing;}
+  @JavascriptInterface public String itemAccountKey(){android.content.SharedPreferences pair=getSharedPreferences("pair",0);return pair.getString("url","")+"|"+pair.getString("characterKey","");}
+  @JavascriptInterface public void copyItemText(String value){if(value==null||value.length()>500)return;ui.post(()->{android.content.ClipboardManager clipboard=(android.content.ClipboardManager)getSystemService(CLIPBOARD_SERVICE);clipboard.setPrimaryClip(android.content.ClipData.newPlainText("物品信息",value));});}
+
+
+  @JavascriptInterface public void recruitBoard(String action,String view,int index){readExecutor.execute(()->{try{JSONObject result=Transport.request(MainActivity.this,"/recruit-board",new JSONObject().put("action",action).put("viewId",view).put("index",index));ui.post(()->web.evaluateJavascript("boardResult("+JSONObject.quote(action)+",true,"+result.toString()+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("boardResult("+JSONObject.quote(action)+",false,{error:"+JSONObject.quote(e.getMessage())+"})",null));}});}
+  @JavascriptInterface public void recruitment(String action,long messageId,String viewId,int request){final String board=pendingBoardView,listing=pendingListing;ChatService.SEND.execute(()->{try{JSONObject result=Transport.request(MainActivity.this,"/recruit",new JSONObject().put("action",action).put("messageId",messageId).put("viewId",viewId).put("boardView",board).put("listingId",listing));ui.post(()->web.evaluateJavascript("recruitmentResult("+JSONObject.quote(action)+",true,"+result+","+request+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("recruitmentResult("+JSONObject.quote(action)+",false,{error:"+JSONObject.quote(e.getMessage())+"},"+request+")",null));}});}
+  private int streamPreviousUi=-1;
+  @JavascriptInterface public void streamKeepScreen(boolean keep){ui.post(()->{if(keep)getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);else getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);});}
+  @JavascriptInterface public void streamFullscreen(boolean fullscreen){ui.post(()->{streamFullscreenActive=fullscreen;if(Build.VERSION.SDK_INT>=30){android.view.WindowInsetsController c=getWindow().getInsetsController();if(c!=null){if(fullscreen){c.hide(android.view.WindowInsets.Type.systemBars());c.setSystemBarsBehavior(android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);}else c.show(android.view.WindowInsets.Type.systemBars());}}root.requestApplyInsets();if(fullscreen){setRequestedOrientation(android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);if(streamPreviousUi<0)streamPreviousUi=getWindow().getDecorView().getSystemUiVisibility();getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_FULLSCREEN|android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY|android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE);}else if(streamPreviousUi>=0){setRequestedOrientation(android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);getWindow().getDecorView().setSystemUiVisibility(streamPreviousUi);streamPreviousUi=-1;}});}
+
+  @JavascriptInterface public void streamTextInput(String session){ui.post(()->{if(streamIme!=null)streamIme.close();streamIme=new StreamImeView(MainActivity.this,session);root.addView(streamIme,new FrameLayout.LayoutParams(1,1));streamIme.requestFocus();streamIme.postDelayed(()->((android.view.inputmethod.InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).showSoftInput(streamIme,android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT),100);});}
+  @JavascriptInterface public void streamImeClose(){ui.post(()->{if(streamIme!=null)streamIme.close();});}
+  @JavascriptInterface public void streamKeys(String session,long epoch,long sequence,String keys,long wheelUp,long wheelDown){streamInputExecutor.execute(()->{try{JSONArray list=new JSONArray(keys);if(list.length()>8)throw new Exception("按键请求过长");Transport.request(MainActivity.this,"/stream-input",new JSONObject().put("session",session).put("control",epoch).put("sequence",sequence).put("keys",list).put("wheelUp",wheelUp).put("wheelDown",wheelDown));ui.post(()->web.evaluateJavascript("streamKeysResult("+JSONObject.quote(session)+","+epoch+","+sequence+",true,"+JSONObject.quote("")+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("streamKeysResult("+JSONObject.quote(session)+","+epoch+","+sequence+",false,"+JSONObject.quote(e.getMessage())+")",null));}});}
+
+  @JavascriptInterface public void streamControl(String session,long sequence,boolean enabled){readExecutor.execute(()->{try{JSONObject result=Transport.request(MainActivity.this,"/stream-control",new JSONObject().put("session",session).put("sequence",sequence).put("enabled",enabled));ui.post(()->web.evaluateJavascript("streamControlResult("+JSONObject.quote(session)+","+sequence+",true,"+result.optBoolean("enabled")+","+JSONObject.quote("")+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("streamControlResult("+JSONObject.quote(session)+","+sequence+",false,false,"+JSONObject.quote(e.getMessage())+")",null));}});}
+  @JavascriptInterface public void streamPointer(String session,long epoch,long sequence,float x,float y,boolean down,boolean relative,boolean begin){streamPointerExecutor.execute(()->{try{Transport.request(MainActivity.this,"/stream-pointer",new JSONObject().put("session",session).put("control",epoch).put("sequence",sequence).put("x",x).put("y",y).put("down",down).put("relative",relative).put("begin",begin));ui.post(()->web.evaluateJavascript("streamPointerResult("+JSONObject.quote(session)+","+epoch+","+sequence+",true,"+JSONObject.quote("")+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("streamPointerResult("+JSONObject.quote(session)+","+epoch+","+sequence+",false,"+JSONObject.quote(e.getMessage())+")",null));}});}
+  @JavascriptInterface public void streamVideoStart(String session,int width,int height,int fps,int request,String transport,String udpHost,int udpPort){ui.post(()->{web.setBackgroundColor(android.graphics.Color.TRANSPARENT);hardwarePlayer.start(session,width,height,fps,request,transport,udpHost,udpPort);});}
+  @JavascriptInterface public void streamVideoStop(){ui.post(()->{hardwarePlayer.stop();applyTheme(getSharedPreferences("appearance",0).getString("settings","{}"));});}
+  @JavascriptInterface public void streamVideoLayout(float x,float y,float width,float height){ui.post(()->{float scale=getResources().getDisplayMetrics().density;FrameLayout.LayoutParams p=new FrameLayout.LayoutParams(Math.max(1,Math.round(width*scale)),Math.max(1,Math.round(height*scale)));p.leftMargin=Math.round(x*scale);p.topMargin=Math.round(y*scale);hardwarePlayer.view.setLayoutParams(p);});}
+
+
+  @JavascriptInterface public void streamComponentDownloads(){ui.post(()->{try{startActivity(new Intent(Intent.ACTION_VIEW,android.net.Uri.parse("https://github.com/Xiao-Yanjiu/OmniToolbox.xiaoyanjiu/releases/tag/phone-v0.3.58")));}catch(Exception e){showError("无法打开浏览器，请在电脑模块串流设置下载组件");}});}
+  @JavascriptInterface public void streamConfigured(String action,int width,int height,int fps,int bitrate,int request,String transport){(action.equals("stop")?readExecutor:streamExecutor).execute(()->{try{JSONObject result=Transport.request(MainActivity.this,"/stream",new JSONObject().put("action",action).put("width",width).put("height",height).put("fps",fps).put("bitrate",bitrate).put("transport",transport));ui.post(()->web.evaluateJavascript("streamResult("+request+","+JSONObject.quote(action)+",true,"+result+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("streamResult("+request+","+JSONObject.quote(action)+",false,{error:"+JSONObject.quote(e.getMessage())+"})",null));}});}
+  @JavascriptInterface public void stream(String action,int width,int height,int request){(action.equals("stop")?readExecutor:streamExecutor).execute(()->{try{JSONObject result=Transport.request(MainActivity.this,"/stream",new JSONObject().put("action",action).put("width",width).put("height",height));ui.post(()->web.evaluateJavascript("streamResult("+request+","+JSONObject.quote(action)+",true,"+result+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("streamResult("+request+","+JSONObject.quote(action)+",false,{error:"+JSONObject.quote(e.getMessage())+"})",null));}});}
+  @JavascriptInterface public void icons(String ids){assetExecutor.execute(()->{try{JSONObject result=Transport.request(MainActivity.this,"/icons",new JSONObject().put("ids",new JSONArray(ids)));ui.post(()->web.evaluateJavascript("characterIconsResult("+result+")",null));}catch(Exception ignored){ui.post(()->web.evaluateJavascript("characterIconsResult({failed:JSON.parse("+JSONObject.quote(ids)+")})",null));}});}
+  @JavascriptInterface public void item(long itemId,int request){readExecutor.execute(()->{try{JSONObject result=Transport.request(MainActivity.this,"/item",new JSONObject().put("itemId",itemId));ui.post(()->web.evaluateJavascript("itemResult("+request+",true,"+result+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("itemResult("+request+",false,{error:"+JSONObject.quote(e.getMessage())+"})",null));}});}
+  @JavascriptInterface public void character(String section,int request){readExecutor.execute(()->{try{JSONObject result=Transport.request(MainActivity.this,"/character",new JSONObject().put("section",section));ui.post(()->web.evaluateJavascript("characterResult("+request+",true,"+result+")",null));}catch(Exception e){ui.post(()->web.evaluateJavascript("characterResult("+request+",false,{error:"+JSONObject.quote(e.getMessage())+"})",null));}});}
+
+
+  @JavascriptInterface public String appVersion(){try{return getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception e){return "";}}
+  @JavascriptInterface public void history(String direction){ChatService.history(direction);}
+  @JavascriptInterface public String snapshotFor(String current,String view,String thread){return ChatService.snapshotFor(current,view,thread);}
+  @JavascriptInterface public void requestPair(String host,int port){manualConnect(host,port);}
+  @JavascriptInterface public void cancelPair(){pairingGeneration.incrementAndGet();}
+  @JavascriptInterface public String connectionAddress(){try{java.net.URI uri=new java.net.URI(getSharedPreferences("pair",0).getString("url","https://localhost:18766"));return new JSONObject().put("host",uri.getHost().equals("localhost")?"":uri.getHost()).put("port",uri.getPort()<0?18766:uri.getPort()).toString();}catch(Exception e){return "{}";}}
+  @JavascriptInterface public String snapshotSelected(String current,String view,String thread,String selection){return ChatService.snapshotSelected(current,view,thread,selection);}
+  @JavascriptInterface public String snapshot(){return ChatService.snapshot();}
+  @JavascriptInterface public String loadNavigation(){return getSharedPreferences("navigation",0).getString("order","{}");}
+  @JavascriptInterface public void saveNavigation(String value){if(value!=null&&value.length()<65536)getSharedPreferences("navigation",0).edit().putString("order",value).apply();}
+  @JavascriptInterface public String loadAppearance(){return getSharedPreferences("appearance",0).getString("settings","{}");}
+  @JavascriptInterface public void saveAppearance(String value){if(value==null||value.length()>4096)return;try{new JSONObject(value);getSharedPreferences("appearance",0).edit().putString("settings",value).apply();applyTheme(value);}catch(Exception ignored){}}
+  @JavascriptInterface public String background(){return readBackground();}
+  @JavascriptInterface public void chooseBackground(){ui.post(()->startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).setType("image/*").addCategory(Intent.CATEGORY_OPENABLE),30));}
+  @JavascriptInterface public void removeBackground(){backgroundFile().delete();ui.post(()->web.evaluateJavascript("backgroundChanged('')",null));}
+  @JavascriptInterface public void reload(){ui.post(()->{if(getSharedPreferences("pair",0).getString("token","").isEmpty()){ChatService.state="未连接，请先连接设备";return;}getSharedPreferences("receiver",0).edit().putBoolean("paused",false).apply();ChatService.initialize();startForegroundService(new Intent(MainActivity.this,ChatService.class));});}
+  @JavascriptInterface public void disconnect(){ui.post(()->{getSharedPreferences("receiver",0).edit().putBoolean("paused",true).apply();AccountStore.remember(MainActivity.this,ChatService.worldAccount);stopService(new Intent(MainActivity.this,ChatService.class));ChatService.state="已断开 · 授权已保留";});}
+  @JavascriptInterface public String accounts(){return AccountStore.list(MainActivity.this);}
+  @JavascriptInterface public void deleteAccount(String id){ui.post(()->GameDialogStyle.builder(MainActivity.this).setTitle("删除账号").setMessage("删除此手机保存的账号和连接凭据？再次添加时需要重新申请授权。").setNegativeButton("取消",null).setPositiveButton("删除",(dialog,which)->{try{Transport.cancelPoll();boolean active=AccountStore.remove(MainActivity.this,id);if(active){pairingGeneration.incrementAndGet();stopService(new Intent(MainActivity.this,ChatService.class));getSharedPreferences("receiver",0).edit().putBoolean("paused",true).apply();ChatService.initialize();ChatService.state="账号已删除";}web.evaluateJavascript("accountsChanged()",null);}catch(Exception e){showError(e.getMessage());}}).show());}
+  @JavascriptInterface public void switchAccount(String id){ui.post(()->{try{pairingGeneration.incrementAndGet();Transport.cancelPoll();stopService(new Intent(MainActivity.this,ChatService.class));AccountStore.select(MainActivity.this,id);ChatService.initialize();startForegroundService(new Intent(MainActivity.this,ChatService.class));web.evaluateJavascript("accountsChanged();document.getElementById('accountsDialog').close();Phone.displayAssets()",null);}catch(Exception e){showError(e.getMessage());}});}
+  @JavascriptInterface public void reconnect(){ui.post(()->{if(getSharedPreferences("pair",0).getString("token","").isEmpty()){web.evaluateJavascript("openManualPair()",null);return;}getSharedPreferences("receiver",0).edit().putBoolean("paused",false).apply();startForegroundService(new Intent(MainActivity.this,ChatService.class).setAction("recover"));});}
+  @JavascriptInterface public void forgetAccount(){ui.post(()->GameDialogStyle.builder(MainActivity.this).setTitle("重新授权当前连接").setMessage("清除当前连接凭据后，需要电脑重新批准授权。确认继续？").setNegativeButton("取消",null).setPositiveButton("继续",(dialog,which)->{getSharedPreferences("receiver",0).edit().putBoolean("paused",true).apply();stopService(new Intent(MainActivity.this,ChatService.class));getSharedPreferences("pair",0).edit().clear().apply();web.evaluateJavascript("openManualPair()",null);}).show());}
+  @JavascriptInterface public void openRisingStones(){ui.post(()->{if(ChatService.pageEnabled("risingStones"))startActivity(new Intent(MainActivity.this,RisingStonesActivity.class));else android.widget.Toast.makeText(MainActivity.this,"服务端已停用石之家",1).show();});}
+  @JavascriptInterface public void openWiki(){ui.post(()->{if(ChatService.pageEnabled("wiki"))startActivity(new Intent(MainActivity.this,WikiActivity.class));else android.widget.Toast.makeText(MainActivity.this,"服务端已停用灰机Wiki",1).show();});}
+  @JavascriptInterface public void openFishing(){ui.post(()->{if(ChatService.pageEnabled("fishing"))startActivity(new Intent(MainActivity.this,FishingActivity.class));else android.widget.Toast.makeText(MainActivity.this,"服务端已停用鱼糕功能",1).show();});}
+  @JavascriptInterface public void backgroundSettings(){ui.post(()->GameDialogStyle.builder(MainActivity.this).setTitle("通知与后台运行").setItems(new String[]{"通知权限","允许后台持续接收（忽略电池优化）","应用设置（后台运行 / 自启动）"},(dialog,which)->{try{Intent settings;if(which==0)settings=new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(android.provider.Settings.EXTRA_APP_PACKAGE,getPackageName());else if(which==1&&!getSystemService(PowerManager.class).isIgnoringBatteryOptimizations(getPackageName()))settings=new Intent(android.provider.Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,android.net.Uri.parse("package:"+getPackageName()));else settings=new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,android.net.Uri.parse("package:"+getPackageName()));startActivity(settings);}catch(Exception e){startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,android.net.Uri.parse("package:"+getPackageName())));}}).show());}
+  @JavascriptInterface public void send(String channel,String target,String text){ChatService.SEND.execute(()->{try{Transport.request(MainActivity.this,"/send",new JSONObject().put("channel",channel).put("target",target).put("text",text));if(channel.equals("频道操作"))Transport.cancelPoll();ui.post(()->web.evaluateJavascript("sent(true,'已提交到游戏')",null));}catch(Exception e){String message=JSONObject.quote(e.getMessage()==null?"发送失败":e.getMessage());ui.post(()->web.evaluateJavascript("sent(false,"+message+")",null));}});}
+ }
+}
+

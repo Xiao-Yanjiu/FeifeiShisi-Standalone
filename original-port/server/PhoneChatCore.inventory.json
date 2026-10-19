@@ -1,0 +1,3352 @@
+{
+  "baselineSha256": "BE33B5C6FFE60A806A8BA5BC3DE3C60215DFACE9A48BDB4D79DB9A317E9D6083",
+  "retained": [
+    "ChatEntry",
+    "QQReplayGate",
+    "PushProfile",
+    "PushResult",
+    "PushRouter",
+    "FishRow",
+    "FishPlan",
+    "FishSchedule",
+    "DiskChatStore",
+    "PhoneTab",
+    "RecruitmentLink",
+    "DirectListing",
+    "DirectBoardCache"
+  ],
+  "members": [
+    {
+      "name": "Info",
+      "line": 78,
+      "end": 78,
+      "kind": "PropertyDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Settings",
+      "line": 79,
+      "end": 114,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ChatEntry",
+      "line": 115,
+      "end": 144,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 145,
+      "end": 150,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 151,
+      "end": 151,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 152,
+      "end": 152,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "gate",
+      "line": 153,
+      "end": 153,
+      "kind": "PropertyDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetGameState",
+      "line": 154,
+      "end": 154,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RestoreGameState",
+      "line": 155,
+      "end": 155,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PairingFile",
+      "line": 156,
+      "end": 156,
+      "kind": "PropertyDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PushFile",
+      "line": 157,
+      "end": 157,
+      "kind": "PropertyDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 158,
+      "end": 158,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 159,
+      "end": 159,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 160,
+      "end": 160,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 161,
+      "end": 161,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RestorePushKeys",
+      "line": 162,
+      "end": 162,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SavePushKeys",
+      "line": 163,
+      "end": 163,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PushConfiguration",
+      "line": 164,
+      "end": 164,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "QQReplayGate",
+      "line": 165,
+      "end": 171,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StartPush",
+      "line": 172,
+      "end": 172,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PushProfile",
+      "line": 173,
+      "end": 173,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PushResult",
+      "line": 174,
+      "end": 174,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PushRouter",
+      "line": 175,
+      "end": 225,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "AuthorizedDevice",
+      "line": 226,
+      "end": 226,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DeviceRequest",
+      "line": 227,
+      "end": 227,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 228,
+      "end": 228,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 229,
+      "end": 229,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 230,
+      "end": 230,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 233,
+      "end": 233,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 234,
+      "end": 234,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "NormalizePages",
+      "line": 235,
+      "end": 235,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 236,
+      "end": 236,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 236,
+      "end": 236,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "OmniPage",
+      "line": 237,
+      "end": 237,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "NavigationPageEnabled",
+      "line": 238,
+      "end": 238,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RefreshOmniNavigation",
+      "line": 239,
+      "end": 239,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PageEnabled",
+      "line": 240,
+      "end": 240,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PageNavigation",
+      "line": 241,
+      "end": 241,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "NavigationChanged",
+      "line": 242,
+      "end": 242,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DrawPageNavigation",
+      "line": 243,
+      "end": 259,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FishRow",
+      "line": 261,
+      "end": 261,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FishPlan",
+      "line": 262,
+      "end": 262,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FishSchedule",
+      "line": 264,
+      "end": 285,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 286,
+      "end": 286,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 287,
+      "end": 287,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 288,
+      "end": 288,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 289,
+      "end": 289,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 290,
+      "end": 290,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 291,
+      "end": 291,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 292,
+      "end": 292,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FishFile",
+      "line": 293,
+      "end": 293,
+      "kind": "PropertyDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SaveFish",
+      "line": 294,
+      "end": 294,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StartFishing",
+      "line": 295,
+      "end": 299,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StopFishing",
+      "line": 300,
+      "end": 300,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DeliverFish",
+      "line": 301,
+      "end": 301,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DeliverFishCore",
+      "line": 302,
+      "end": 307,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "TickFishing",
+      "line": 308,
+      "end": 320,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FishingAction",
+      "line": 321,
+      "end": 333,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "HasDirectReceiver",
+      "line": 335,
+      "end": 335,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "MarkPoll",
+      "line": 336,
+      "end": 336,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Authorized",
+      "line": 337,
+      "end": 337,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "HasWorldIdentity",
+      "line": 338,
+      "end": 338,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WorldAllowed",
+      "line": 339,
+      "end": 339,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ApproveDevice",
+      "line": 340,
+      "end": 340,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RevokeDevice",
+      "line": 342,
+      "end": 342,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RestorePairingFile",
+      "line": 343,
+      "end": 361,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PersistPairingFile",
+      "line": 362,
+      "end": 372,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PersistGameState",
+      "line": 373,
+      "end": 373,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DiskChatStore",
+      "line": 377,
+      "end": 441,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "OpenHistoryStore",
+      "line": 442,
+      "end": 464,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 465,
+      "end": 465,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 466,
+      "end": 466,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 467,
+      "end": 467,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 468,
+      "end": 468,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 469,
+      "end": 469,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 470,
+      "end": 470,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 471,
+      "end": 471,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 472,
+      "end": 472,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 473,
+      "end": 473,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 474,
+      "end": 474,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 475,
+      "end": 475,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 476,
+      "end": 476,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 477,
+      "end": 477,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 478,
+      "end": 478,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 479,
+      "end": 479,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 480,
+      "end": 480,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 481,
+      "end": 481,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 482,
+      "end": 482,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 483,
+      "end": 483,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 484,
+      "end": 484,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 485,
+      "end": 485,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 486,
+      "end": 486,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneTab",
+      "line": 487,
+      "end": 501,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 502,
+      "end": 502,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 503,
+      "end": 503,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 504,
+      "end": 504,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 505,
+      "end": 505,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 506,
+      "end": 506,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 507,
+      "end": 507,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 508,
+      "end": 508,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 509,
+      "end": 509,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 509,
+      "end": 509,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 509,
+      "end": 509,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GameAccount",
+      "line": 510,
+      "end": 510,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 510,
+      "end": 510,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WorldAccount",
+      "line": 511,
+      "end": 511,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 512,
+      "end": 512,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 512,
+      "end": 512,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 513,
+      "end": 513,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 514,
+      "end": 514,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 515,
+      "end": 515,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 515,
+      "end": 515,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ConfigFile",
+      "line": 516,
+      "end": 516,
+      "kind": "PropertyDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ConstructorDeclaration",
+      "line": 517,
+      "end": 538,
+      "kind": "ConstructorDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "OnEnable",
+      "line": 539,
+      "end": 551,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "OnDisable",
+      "line": 552,
+      "end": 560,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "OnDispose",
+      "line": 561,
+      "end": 561,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Save",
+      "line": 562,
+      "end": 566,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Update",
+      "line": 567,
+      "end": 584,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StartServer",
+      "line": 585,
+      "end": 603,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StopServer",
+      "line": 604,
+      "end": 611,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RotatePair",
+      "line": 612,
+      "end": 616,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "AcceptLoop",
+      "line": 617,
+      "end": 630,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Handle",
+      "line": 631,
+      "end": 792,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "Equal",
+      "line": 793,
+      "end": 793,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Reply",
+      "line": 794,
+      "end": 798,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Add",
+      "line": 799,
+      "end": 807,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 809,
+      "end": 809,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 809,
+      "end": 809,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ResetChatCache",
+      "line": 810,
+      "end": 813,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReloadGameHistory",
+      "line": 814,
+      "end": 820,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 822,
+      "end": 822,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 822,
+      "end": 822,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 822,
+      "end": 822,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 823,
+      "end": 823,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "LoadGameChatHistory",
+      "line": 824,
+      "end": 855,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ImportNativeHistory",
+      "line": 856,
+      "end": 870,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "NormalizePlayerName",
+      "line": 871,
+      "end": 872,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ImportWorldHistory",
+      "line": 873,
+      "end": 891,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WorldSender",
+      "line": 892,
+      "end": 898,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ImportCachedCollection",
+      "line": 899,
+      "end": 911,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ImportOptimizedHistory",
+      "line": 912,
+      "end": 923,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ImportOptimizedRecord",
+      "line": 924,
+      "end": 935,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "OnSuppressedChat",
+      "line": 937,
+      "end": 937,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "OnChat",
+      "line": 938,
+      "end": 959,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "OnPrompt",
+      "line": 960,
+      "end": 963,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "NotifyRequest",
+      "line": 964,
+      "end": 971,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RecordSourceProof",
+      "line": 972,
+      "end": 981,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 982,
+      "end": 982,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Label",
+      "line": 983,
+      "end": 989,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Send",
+      "line": 990,
+      "end": 1018,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ResolveAlias",
+      "line": 1019,
+      "end": 1026,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RefreshMembershipState",
+      "line": 1027,
+      "end": 1027,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ChannelAction",
+      "line": 1028,
+      "end": 1043,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ExecuteGameMacro",
+      "line": 1044,
+      "end": 1052,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "MatchEntryTabs",
+      "line": 1053,
+      "end": 1054,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DecodeNativeFilters",
+      "line": 1055,
+      "end": 1068,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "CreateNativeFilter",
+      "line": 1069,
+      "end": 1074,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReadNativeFilters",
+      "line": 1075,
+      "end": 1093,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1095,
+      "end": 1095,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RefreshNoviceStates",
+      "line": 1096,
+      "end": 1102,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReadNoviceList",
+      "line": 1103,
+      "end": 1114,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "WorldStatusIcon",
+      "line": 1115,
+      "end": 1118,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "RefreshWorldStates",
+      "line": 1119,
+      "end": 1128,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WorldIdentityParts",
+      "line": 1129,
+      "end": 1129,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1130,
+      "end": 1130,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GameStatusIcons",
+      "line": 1131,
+      "end": 1140,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "GameBitmapIcons",
+      "line": 1143,
+      "end": 1153,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "DecodeBitmapIcons",
+      "line": 1154,
+      "end": 1171,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1172,
+      "end": 1172,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GamePartImage",
+      "line": 1173,
+      "end": 1179,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1180,
+      "end": 1180,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GameIconImage",
+      "line": 1181,
+      "end": 1182,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "GameImage",
+      "line": 1183,
+      "end": 1184,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "GameImage",
+      "line": 1185,
+      "end": 1192,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1193,
+      "end": 1193,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1193,
+      "end": 1193,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GameJobIcons",
+      "line": 1194,
+      "end": 1214,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "RecruitmentLink",
+      "line": 1215,
+      "end": 1216,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "NativeRecruitment",
+      "line": 1217,
+      "end": 1218,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "WorldRecruitment",
+      "line": 1219,
+      "end": 1235,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FindWorldFeature",
+      "line": 1236,
+      "end": 1236,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Value",
+      "line": 1237,
+      "end": 1237,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Text",
+      "line": 1238,
+      "end": 1238,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WorldPost",
+      "line": 1239,
+      "end": 1239,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DecodeWorldLive",
+      "line": 1240,
+      "end": 1240,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FindLiveMember",
+      "line": 1241,
+      "end": 1241,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1242,
+      "end": 1242,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1242,
+      "end": 1242,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1242,
+      "end": 1242,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RefreshWorldLiveProjection",
+      "line": 1243,
+      "end": 1257,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1258,
+      "end": 1258,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1260,
+      "end": 1260,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WorldLiveRows",
+      "line": 1261,
+      "end": 1266,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PresentWorldLive",
+      "line": 1267,
+      "end": 1267,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1269,
+      "end": 1269,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1270,
+      "end": 1270,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetWorldBoardClient",
+      "line": 1271,
+      "end": 1271,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DisposeWorldBoard",
+      "line": 1272,
+      "end": 1272,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1273,
+      "end": 1273,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WorldBoardAction",
+      "line": 1274,
+      "end": 1274,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WorldBoardActionCore",
+      "line": 1275,
+      "end": 1286,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1287,
+      "end": 1287,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1287,
+      "end": 1287,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1287,
+      "end": 1287,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PartyConfirmation",
+      "line": 1288,
+      "end": 1288,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "PartyAction",
+      "line": 1289,
+      "end": 1304,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1305,
+      "end": 1305,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1305,
+      "end": 1305,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DirectListing",
+      "line": 1306,
+      "end": 1309,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DirectBoardCache",
+      "line": 1310,
+      "end": 1322,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DirectInteropServices",
+      "line": 1323,
+      "end": 1323,
+      "kind": "ClassDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1324,
+      "end": 1324,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1325,
+      "end": 1325,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1326,
+      "end": 1326,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1326,
+      "end": 1326,
+      "kind": "FieldDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1326,
+      "end": 1326,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1326,
+      "end": 1326,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1326,
+      "end": 1326,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "AttachDirectBoard",
+      "line": 1327,
+      "end": 1331,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "DetachDirectBoard",
+      "line": 1332,
+      "end": 1332,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReceiveDirectListings",
+      "line": 1333,
+      "end": 1341,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DirectBoardSelection",
+      "line": 1342,
+      "end": 1347,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "EnsureDirectBoard",
+      "line": 1350,
+      "end": 1350,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DirectBoardInitialized",
+      "line": 1351,
+      "end": 1351,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RequestDirectBoard",
+      "line": 1352,
+      "end": 1360,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RestoreDirectBoardSelection",
+      "line": 1361,
+      "end": 1364,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PublishDirectArea",
+      "line": 1365,
+      "end": 1369,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RefreshDirectBoard",
+      "line": 1370,
+      "end": 1401,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DirectAreaCounts",
+      "line": 1402,
+      "end": 1402,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DirectAreaSnapshot",
+      "line": 1403,
+      "end": 1403,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FindDirectListing",
+      "line": 1404,
+      "end": 1404,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DirectJobRole",
+      "line": 1405,
+      "end": 1405,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "PresentDirectListing",
+      "line": 1406,
+      "end": 1411,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "MatchesDirectArea",
+      "line": 1412,
+      "end": 1412,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1413,
+      "end": 1413,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1413,
+      "end": 1413,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1414,
+      "end": 1414,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1414,
+      "end": 1414,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1414,
+      "end": 1414,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1414,
+      "end": 1414,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1415,
+      "end": 1415,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StreamKeyInput",
+      "line": 1416,
+      "end": 1416,
+      "kind": "StructDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetForegroundWindow",
+      "line": 1417,
+      "end": 1417,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "MapStreamVirtualKey",
+      "line": 1418,
+      "end": 1418,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SendInput",
+      "line": 1419,
+      "end": 1419,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1420,
+      "end": 1420,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SendStreamKey",
+      "line": 1421,
+      "end": 1421,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReleaseStreamKeys",
+      "line": 1422,
+      "end": 1422,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ApplyStreamKeys",
+      "line": 1423,
+      "end": 1423,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "CheckStreamKeys",
+      "line": 1424,
+      "end": 1424,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1425,
+      "end": 1425,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1425,
+      "end": 1425,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WriteStreamText",
+      "line": 1426,
+      "end": 1426,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ApplyStreamIme",
+      "line": 1427,
+      "end": 1427,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ApplyStreamText",
+      "line": 1428,
+      "end": 1428,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1429,
+      "end": 1429,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1429,
+      "end": 1429,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SendStreamWheel",
+      "line": 1429,
+      "end": 1429,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1430,
+      "end": 1430,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1430,
+      "end": 1430,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1430,
+      "end": 1430,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1431,
+      "end": 1431,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1431,
+      "end": 1431,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1431,
+      "end": 1431,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1431,
+      "end": 1431,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1431,
+      "end": 1431,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1431,
+      "end": 1431,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StreamPoint",
+      "line": 1432,
+      "end": 1432,
+      "kind": "StructDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StreamMouseInput",
+      "line": 1433,
+      "end": 1433,
+      "kind": "StructDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SendMouseInput",
+      "line": 1434,
+      "end": 1434,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ClientToScreen",
+      "line": 1435,
+      "end": 1435,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetSystemMetrics",
+      "line": 1436,
+      "end": 1436,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "MoveStreamPointer",
+      "line": 1437,
+      "end": 1437,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "MoveStreamRelative",
+      "line": 1438,
+      "end": 1438,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WriteStreamPointerButton",
+      "line": 1439,
+      "end": 1439,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WriteStreamPointer",
+      "line": 1440,
+      "end": 1440,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReleaseStreamPointer",
+      "line": 1441,
+      "end": 1441,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ApplyStreamPointer",
+      "line": 1442,
+      "end": 1442,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SetForegroundWindow",
+      "line": 1443,
+      "end": 1443,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "IsIconic",
+      "line": 1444,
+      "end": 1444,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ShowWindowAsync",
+      "line": 1445,
+      "end": 1445,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1446,
+      "end": 1446,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1446,
+      "end": 1446,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1446,
+      "end": 1446,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RequestStreamForeground",
+      "line": 1447,
+      "end": 1447,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "CanActivateStream",
+      "line": 1448,
+      "end": 1448,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetAsyncKeyState",
+      "line": 1449,
+      "end": 1449,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "TapStreamActivation",
+      "line": 1450,
+      "end": 1450,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "BringStreamToFront",
+      "line": 1451,
+      "end": 1451,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ConfirmStreamForeground",
+      "line": 1452,
+      "end": 1452,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ApplyStreamControl",
+      "line": 1453,
+      "end": 1453,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1454,
+      "end": 1454,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1454,
+      "end": 1454,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1454,
+      "end": 1454,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1455,
+      "end": 1455,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StreamRect",
+      "line": 1456,
+      "end": 1456,
+      "kind": "StructDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetWindowRect",
+      "line": 1457,
+      "end": 1457,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetClientRect",
+      "line": 1458,
+      "end": 1458,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SetWindowPos",
+      "line": 1459,
+      "end": 1459,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetStreamWindowStyle",
+      "line": 1460,
+      "end": 1460,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1461,
+      "end": 1461,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StopStream",
+      "line": 1462,
+      "end": 1462,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RestoreStreamSafely",
+      "line": 1463,
+      "end": 1471,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1473,
+      "end": 1473,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StreamEvent",
+      "line": 1473,
+      "end": 1473,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetCursorPos",
+      "line": 1474,
+      "end": 1474,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ScreenToClient",
+      "line": 1475,
+      "end": 1475,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1476,
+      "end": 1476,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1476,
+      "end": 1476,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1476,
+      "end": 1476,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StreamKeyframe",
+      "line": 1477,
+      "end": 1477,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PublishStreamPacket",
+      "line": 1478,
+      "end": 1478,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StreamVideo",
+      "line": 1479,
+      "end": 1486,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ResolveStreamUdp",
+      "line": 1487,
+      "end": 1487,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "HardwareStreamHelper",
+      "line": 1488,
+      "end": 1488,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1489,
+      "end": 1489,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1489,
+      "end": 1489,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1489,
+      "end": 1489,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1489,
+      "end": 1489,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PrepareStreamHelper",
+      "line": 1490,
+      "end": 1490,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetStreamHelper",
+      "line": 1491,
+      "end": 1491,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StreamAction",
+      "line": 1492,
+      "end": 1509,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ItemPublicType",
+      "line": 1512,
+      "end": 1512,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1513,
+      "end": 1513,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1514,
+      "end": 1514,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DisposePhoneItemReadServices",
+      "line": 1515,
+      "end": 1518,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneItemHostType",
+      "line": 1519,
+      "end": 1535,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneItemHostService",
+      "line": 1536,
+      "end": 1541,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneItemServiceMatches",
+      "line": 1542,
+      "end": 1542,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneItemRegisteredServices",
+      "line": 1543,
+      "end": 1553,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneItemExistingService",
+      "line": 1554,
+      "end": 1568,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneItemPublicMethods",
+      "line": 1569,
+      "end": 1569,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneItemSearchLevels",
+      "line": 1570,
+      "end": 1575,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "OmniItemsService",
+      "line": 1576,
+      "end": 1606,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "CreatePhoneItemPriceService",
+      "line": 1607,
+      "end": 1613,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "CreatePhoneItemDataService",
+      "line": 1614,
+      "end": 1620,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneItemCounts",
+      "line": 1621,
+      "end": 1643,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemValue",
+      "line": 1644,
+      "end": 1649,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemBool",
+      "line": 1650,
+      "end": 1650,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemString",
+      "line": 1651,
+      "end": 1651,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemUInt",
+      "line": 1652,
+      "end": 1652,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemULong",
+      "line": 1653,
+      "end": 1653,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemRows",
+      "line": 1654,
+      "end": 1654,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemCall",
+      "line": 1655,
+      "end": 1660,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemTryGet",
+      "line": 1661,
+      "end": 1665,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemCounts",
+      "line": 1666,
+      "end": 1666,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneItemQuote",
+      "line": 1667,
+      "end": 1671,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1672,
+      "end": 1672,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneWorldPriceQuery",
+      "line": 1673,
+      "end": 1673,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1674,
+      "end": 1674,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemCharacter",
+      "line": 1676,
+      "end": 1676,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemNumber",
+      "line": 1677,
+      "end": 1681,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemFlag",
+      "line": 1682,
+      "end": 1682,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemText",
+      "line": 1683,
+      "end": 1683,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ItemListingFingerprint",
+      "line": 1684,
+      "end": 1684,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ValidItemListing",
+      "line": 1685,
+      "end": 1685,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SameItemListing",
+      "line": 1686,
+      "end": 1686,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "OmniItemCapabilities",
+      "line": 1687,
+      "end": 1693,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneCollectionRow",
+      "line": 1697,
+      "end": 1702,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneDisplayWorld",
+      "line": 1704,
+      "end": 1711,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneMapPin",
+      "line": 1712,
+      "end": 1716,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1717,
+      "end": 1717,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneMap",
+      "line": 1718,
+      "end": 1741,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "PhoneShopData",
+      "line": 1742,
+      "end": 1750,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneShopKey",
+      "line": 1751,
+      "end": 1756,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneNPCOfferBuyable",
+      "line": 1757,
+      "end": 1762,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneNPCOffers",
+      "line": 1763,
+      "end": 1777,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "PhoneNPCReview",
+      "line": 1778,
+      "end": 1778,
+      "kind": "ClassDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 1779,
+      "end": 1779,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneNPCAction",
+      "line": 1780,
+      "end": 1808,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneCollectionMatchesUnlock",
+      "line": 1810,
+      "end": 1812,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PhoneCollectionSource",
+      "line": 1813,
+      "end": 1818,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "PhoneCollectionFilter",
+      "line": 1819,
+      "end": 1824,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "OmniCollectionsAction",
+      "line": 1825,
+      "end": 1909,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "OmniItemsAction",
+      "line": 1911,
+      "end": 2024,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ReadItem",
+      "line": 2025,
+      "end": 2025,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ReadCurrencies",
+      "line": 2026,
+      "end": 2036,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ReadCharacterSection",
+      "line": 2037,
+      "end": 2069,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ReadDirectBoard",
+      "line": 2070,
+      "end": 2074,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RecruitmentBoardAction",
+      "line": 2075,
+      "end": 2083,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2084,
+      "end": 2084,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2084,
+      "end": 2084,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2084,
+      "end": 2084,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2084,
+      "end": 2084,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2085,
+      "end": 2085,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GlamourFrames",
+      "line": 2086,
+      "end": 2101,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "OnGame",
+      "line": 2103,
+      "end": 2104,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2105,
+      "end": 2105,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2105,
+      "end": 2105,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "IsRecruitmentFailure",
+      "line": 2106,
+      "end": 2106,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ObserveRecruitmentFailure",
+      "line": 2107,
+      "end": 2107,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "OpenRecruitment",
+      "line": 2108,
+      "end": 2109,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "RecruitmentReady",
+      "line": 2110,
+      "end": 2111,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "RecruitmentConfirmation",
+      "line": 2112,
+      "end": 2118,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "AnswerRecruitment",
+      "line": 2119,
+      "end": 2124,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "RecruitText",
+      "line": 2125,
+      "end": 2125,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "RecruitParts",
+      "line": 2126,
+      "end": 2126,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "RecruitImage",
+      "line": 2127,
+      "end": 2127,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReadDirectRecruitment",
+      "line": 2128,
+      "end": 2133,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ReadRecruitment",
+      "line": 2134,
+      "end": 2143,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ClickRecruitment",
+      "line": 2144,
+      "end": 2154,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "RecruitmentAction",
+      "line": 2155,
+      "end": 2186,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FormatParts",
+      "line": 2188,
+      "end": 2209,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ChatColor",
+      "line": 2210,
+      "end": 2218,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "BuildTabFilter",
+      "line": 2219,
+      "end": 2225,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "RefreshGameMetadata",
+      "line": 2226,
+      "end": 2284,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "ReadGameChannelNames",
+      "line": 2285,
+      "end": 2298,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "AttachWorld",
+      "line": 2299,
+      "end": 2312,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "Hook",
+      "line": 2313,
+      "end": 2314,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DetachWorld",
+      "line": 2315,
+      "end": 2315,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "World",
+      "line": 2316,
+      "end": 2334,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "HasSettings",
+      "line": 2335,
+      "end": 2335,
+      "kind": "PropertyDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2337,
+      "end": 2337,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2337,
+      "end": 2337,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2337,
+      "end": 2337,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "CancelStreamDownload",
+      "line": 2338,
+      "end": 2338,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "StartStreamDownload",
+      "line": 2339,
+      "end": 2354,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DownloadStreamComponent",
+      "line": 2355,
+      "end": 2358,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2359,
+      "end": 2359,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2359,
+      "end": 2359,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DrawStreamAdapterSettings",
+      "line": 2360,
+      "end": 2374,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "DrawSettings",
+      "line": 2375,
+      "end": 2376,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "DrawPanel",
+      "line": 2377,
+      "end": 2436,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2437,
+      "end": 2437,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2438,
+      "end": 2438,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2439,
+      "end": 2439,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2440,
+      "end": 2440,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "QrFile",
+      "line": 2441,
+      "end": 2441,
+      "kind": "PropertyDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "NapCatDirectory",
+      "line": 2442,
+      "end": 2442,
+      "kind": "PropertyDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2443,
+      "end": 2443,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2444,
+      "end": 2444,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2445,
+      "end": 2445,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2445,
+      "end": 2445,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2446,
+      "end": 2446,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2447,
+      "end": 2447,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2448,
+      "end": 2448,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2449,
+      "end": 2449,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2450,
+      "end": 2450,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2450,
+      "end": 2450,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FieldDeclaration",
+      "line": 2451,
+      "end": 2451,
+      "kind": "FieldDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "QQIds",
+      "line": 2452,
+      "end": 2452,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "QQOnline",
+      "line": 2453,
+      "end": 2453,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "QQLoginError",
+      "line": 2454,
+      "end": 2460,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "PrepareNapCat",
+      "line": 2461,
+      "end": 2468,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ConnectQQ",
+      "line": 2469,
+      "end": 2493,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DisconnectQQ",
+      "line": 2494,
+      "end": 2500,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SendQQPush",
+      "line": 2501,
+      "end": 2502,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "SendQQMessage",
+      "line": 2503,
+      "end": 2509,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReceiveQQ",
+      "line": 2510,
+      "end": 2518,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "WorldEventFresh",
+      "line": 2519,
+      "end": 2519,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "QueueQQEvent",
+      "line": 2520,
+      "end": 2520,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "MirrorNativeEvent",
+      "line": 2521,
+      "end": 2521,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "MirrorQQ",
+      "line": 2522,
+      "end": 2522,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DrawQQSettings",
+      "line": 2523,
+      "end": 2546,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "OpenUrl",
+      "line": 2547,
+      "end": 2547,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "DrawPushSettings",
+      "line": 2548,
+      "end": 2558,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "DrawQr",
+      "line": 2560,
+      "end": 2567,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "LogDebug",
+      "line": 2568,
+      "end": 2568,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReadMember",
+      "line": 2570,
+      "end": 2573,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "ReadValue",
+      "line": 2575,
+      "end": 2579,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FindOmniWorldChatClient",
+      "line": 2581,
+      "end": 2601,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FindOmniTreeHouseManager",
+      "line": 2603,
+      "end": 2636,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    },
+    {
+      "name": "FirstFieldOfType",
+      "line": 2638,
+      "end": 2651,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "FindFieldValueOfType",
+      "line": 2653,
+      "end": 2685,
+      "kind": "MethodDeclaration",
+      "hostDependent": false
+    },
+    {
+      "name": "GetService",
+      "line": 2687,
+      "end": 2701,
+      "kind": "MethodDeclaration",
+      "hostDependent": true
+    }
+  ]
+}

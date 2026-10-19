@@ -1,0 +1,7 @@
+﻿namespace Trial;
+internal static class NativeChatFilters
+{
+ static readonly Lazy<(int id,int kind,int caster,int target)[]> rows=new(()=>GameCatalog.Rows("filters").Where(r=>r.GetProperty("kind").GetInt32()!=0&&r.GetProperty("category").GetInt32()!=0).Select(r=>(r.GetProperty("id").GetInt32(),r.GetProperty("kind").GetInt32(),r.GetProperty("caster").GetInt32(),r.GetProperty("target").GetInt32())).ToArray());
+ internal static bool Valid(byte[] data){if(data.Length<128||data.Length>8192||data.Length%4!=0)return false;int stride=data.Length/4;if(rows.Value.Any(r=>r.id>=stride-16))return false;for(int tab=0;tab<4;tab++){int start=tab*stride;if(BitConverter.ToUInt16(data,start)!=tab||BitConverter.ToUInt32(data,start+4)!=(uint)(stride-16))return false;foreach(var row in rows.Value)if(data[start+16+row.id]>2)return false;}return true;}
+ internal static string[] Match(byte[] data,int kind,int source,int target){if(!Valid(data)||source>=12||target>=12)return [];var matches=new List<string>();bool known=rows.Value.Any(r=>r.kind==kind||(r.kind==12&&kind==13));for(int tab=0;tab<4;tab++){int stride=data.Length/4;int start=tab*stride;if(BitConverter.ToUInt16(data,start)!=tab||BitConverter.ToUInt32(data,start+4)!=(uint)(stride-16))return [];if(!known||rows.Value.Any(r=>r.id<stride-16&&data[start+16+r.id]==1&&(r.kind==kind||(r.kind==12&&kind==13))&&(r.caster&(1<<source))!=0&&(r.target&(1<<target))!=0))matches.Add("native:"+tab);}return matches.ToArray();}
+}
